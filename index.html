@@ -1,0 +1,255 @@
+import React, { useState } from 'react';
+import { Menu, X, Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
+
+const Website = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    organization: '',
+    message: ''
+  });
+
+  const services = [
+    {
+      category: "IT Services",
+      items: [
+        { title: "Web Development", description: "Custom coding and design to create user-friendly, engaging websites" },
+        { title: "AI Automation", description: "Streamlining processes with AI solutions tailored to your organization's needs" },
+        { title: "Cloud Solutions", description: "Secure and scalable cloud services to enhance your operations" },
+        { title: "Cybersecurity", description: "Protecting your data with comprehensive security measures" }
+      ]
+    },
+    {
+      category: "Creative Services",
+      items: [
+        { title: "Post Design", description: "Eye-catching graphics and layouts for print and digital media" },
+        { title: "Social Media Management", description: "Engaging content creation and strategy for enhanced online presence" },
+        { title: "Photography & Videography", description: "High-quality visual content that tells your story effectively" },
+        { title: "Brand Strategy", description: "Developing a cohesive brand identity to resonate with your audience" }
+      ]
+    },
+    {
+      category: "Film & Video Production",
+      items: [
+        { title: "Editing Services", description: "Professional editing for polished final products, including promotional videos, documentaries, and corporate videos" },
+        { title: "Scriptwriting", description: "Crafting compelling scripts that convey your message effectively" },
+        { title: "Motion Graphics", description: "Creating dynamic animations that enhance storytelling" }
+      ]
+    },
+    {
+      category: "Consulting Services",
+      items: [
+        { title: "Business Consulting", description: "Strategic advice to optimize your operations and increase efficiency" },
+        { title: "Marketing Strategy", description: "Tailored marketing plans that align with your goals and audience" },
+        { title: "Training Workshops", description: "Workshops to equip your team with essential skills and knowledge" }
+      ]
+    },
+    {
+      category: "Community Engagement",
+      items: [
+        { title: "Event Planning", description: "Comprehensive planning and execution of impactful events" },
+        { title: "Public Relations", description: "Building and maintaining a positive public image for your organization" },
+        { title: "Social Impact Programs", description: "Developing initiatives that promote community well-being and social responsibility" }
+      ]
+    }
+  ];
+
+  const testimonials = [
+    {
+      text: "Maia's ability to blend creative vision with technical expertise transformed our online presence.",
+      author: "Jane Smith, CEO"
+    },
+    {
+      text: "Working with Maia was a game-changer for our organization. Her comprehensive approach delivered outstanding results.",
+      author: "John Davis, Marketing Director"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <nav className="bg-navy-900 text-white fixed w-full z-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex-shrink-0 font-bold text-xl">
+              Hypothius Picturehouse
+            </div>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-8">
+              {["Home", "Services", "Portfolio", "Testimonials", "About Me", "Contact"].map((item) => (
+                <a key={item} href={`#${item.toLowerCase().replace(" ", "-")}`} 
+                   className="hover:text-gold-400 transition-colors">
+                  {item}
+                </a>
+              ))}
+            </div>
+
+            {/* Mobile Navigation Button */}
+            <div className="md:hidden">
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {["Home", "Services", "Portfolio", "Testimonials", "About Me", "Contact"].map((item) => (
+                <a key={item} href={`#${item.toLowerCase().replace(" ", "-")}`}
+                   className="block px-3 py-2 hover:bg-navy-800">
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <div className="relative h-screen">
+        <img 
+          src="/api/placeholder/1920/1080" 
+          alt="Maia in action" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white">
+          <div className="text-center">
+            <h1 className="text-5xl font-bold mb-4">
+              Empowering Your Vision Through Innovative Solutions
+            </h1>
+            <button className="bg-gold-500 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gold-600 transition-colors">
+              Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Introduction */}
+      <section className="py-20 bg-white" id="about-me">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">About Me</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            I am a multidisciplinary creative professional dedicated to driving transformative change for organizations. 
+            With a passion for combining entertainment and real-world impact, I offer a comprehensive suite of services 
+            to help you achieve your goals.
+          </p>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="py-20 bg-gray-50" id="services">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-16">All-in-One Services</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {services.map((service) => (
+              <div key={service.category} className="bg-white rounded-lg shadow-lg p-6">
+                <h3 className="text-xl font-bold mb-4 text-navy-900">{service.category}</h3>
+                <div className="space-y-4">
+                  {service.items.map((item) => (
+                    <div key={item.title}>
+                      <h4 className="font-semibold text-gold-600">{item.title}</h4>
+                      <p className="text-gray-600">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Me */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-16">Why Choose Me?</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <h3 className="text-xl font-bold mb-4">Comprehensive Expertise</h3>
+              <p className="text-gray-600">
+                With a diverse skill set, I serve as a one-stop solution for all your creative and technical needs, 
+                ensuring cohesive branding and messaging across all platforms.
+              </p>
+            </div>
+            <div className="text-center p-6">
+              <h3 className="text-xl font-bold mb-4">Proven Results</h3>
+              <p className="text-gray-600">
+                I have a track record of success in projects that blend creativity with strategic objectives, 
+                delivering measurable results for clients.
+              </p>
+            </div>
+            <div className="text-center p-6">
+              <h3 className="text-xl font-bold mb-4">Personalized Approach</h3>
+              <p className="text-gray-600">
+                Every organization is unique. I tailor my services to fit your specific goals and challenges, 
+                working closely with you to ensure we achieve the desired outcomes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio */}
+      <section className="py-20 bg-gray-50" id="portfolio">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-16">My Portfolio</h2>
+          {/* Portfolio content goes here */}
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-white" id="testimonials">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
+          <div className="space-y-8">
+            {testimonials.map((testimonial) => (
+              <blockquote key={testimonial.author} className="border-l-4 border-gold-600 pl-4 italic text-gray-600">
+                <p>"{testimonial.text}"</p>
+                <footer className="mt-2 font-semibold">— {testimonial.author}</footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="py-20 bg-gray-50" id="contact">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">Contact Me</h2>
+          <form onSubmit={(e) => { e.preventDefault(); /* handle form submission */ }} className="space-y-4">
+            <input type="text" placeholder="Your Name" required className="w-full p-3 border rounded"/>
+            <input type="email" placeholder="Your Email" required className="w-full p-3 border rounded"/>
+            <input type="text" placeholder="Organization" className="w-full p-3 border rounded"/>
+            <textarea placeholder="Your Message" required className="w-full p-3 border rounded" rows="4"></textarea>
+            <button type="submit" className="bg-gold-500 text-white px-6 py-2 rounded-lg">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-6 bg-navy-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 flex justify-between">
+          <div>&copy; 2024 Hypothius Picturehouse</div>
+          <div className="flex space-x-4">
+            <a href="#" aria-label="Facebook"><Facebook /></a>
+            <a href="#" aria-label="Twitter"><Twitter /></a>
+            <a href="#" aria-label="Instagram"><Instagram /></a>
+            <a href="#" aria-label="LinkedIn"><Linkedin /></a>
+          </div>
+          <div className="flex space-x-4">
+            <a href="mailto:example@example.com" aria-label="Email"><Mail /></a>
+            <a href="tel:+123456789" aria-label="Phone"><Phone /></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Website;
