@@ -3,238 +3,386 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Hypothius Picturehouse</title>
+    <title>Maia Buljeta-Fuchs | Transformative Solutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a2942;
+            --gold: #c5a572;
+            --light-gold: #e6d5b8;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: var(--navy);
+            padding: 1rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 1rem;
+            background: rgba(26, 41, 66, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 41, 66, 0.7), rgba(26, 41, 66, 0.7)), url('/api/placeholder/1920/1080') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: var(--gold);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--light-gold);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--navy);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .testimonials {
+            background: var(--gray);
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">Hypothius Picturehouse</div>
-            <div class="navbar-toggle" id="navbarToggle">
-                <span class="toggle-icon"></span>
+        <div class="nav-content">
+            <a href="#" class="logo">HYPOTHIUS PICTUREHOUSE</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
             </div>
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="#about-me">About Me</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
         </div>
     </nav>
 
-    <header class="hero">
-        <img src="https://via.placeholder.com/1920x1080" alt="Maia in action" class="hero-image">
-        <div class="hero-content">
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="fade-up">
             <h1>Empowering Your Vision Through Innovative Solutions</h1>
-            <button class="hero-button">Get Started</button>
-        </div>
-    </header>
-
-    <section id="about-me" class="section about-me">
-        <h2>About Me</h2>
-        <p>I am a multidisciplinary creative professional dedicated to driving transformative change for organizations...</p>
-    </section>
-
-    <section id="services" class="section services">
-        <h2>All-in-One Services</h2>
-        <div class="services-container">
-            <!-- Services data -->
+            <p>Where Creativity Meets Technical Excellence</p>
+            <a href="#contact" class="cta-button">Get Started</a>
         </div>
     </section>
 
-    <section id="testimonials" class="section testimonials">
-        <h2>Testimonials</h2>
-        <blockquote>
-            <p>"Maia's ability to blend creative vision with technical expertise transformed our online presence."</p>
-            <footer>— Jane Smith, CEO</footer>
-        </blockquote>
-        <blockquote>
-            <p>"Working with Maia was a game-changer for our organization. Her comprehensive approach delivered outstanding results."</p>
-            <footer>— John Davis, Marketing Director</footer>
-        </blockquote>
-    </section>
-
-    <section id="contact" class="section contact">
-        <h2>Contact Me</h2>
-        <form id="contactForm">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <input type="text" placeholder="Organization">
-            <textarea placeholder="Your Message" required rows="4"></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-
-    <footer class="footer">
-        <div>&copy; 2024 Hypothius Picturehouse</div>
-        <div class="socials">
-            <a href="#" aria-label="Facebook">Facebook</a>
-            <a href="#" aria-label="Twitter">Twitter</a>
-            <a href="#" aria-label="Instagram">Instagram</a>
-            <a href="#" aria-label="LinkedIn">LinkedIn</a>
+    <section id="about">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">Welcome to Excellence</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                I am absolutely thrilled to be your partner in creating transformative solutions that will elevate your organization to new heights! As a passionate multidisciplinary creative professional, I bring an wonderful combination of technical expertise and artistic vision to every project. It's truly exciting to have the opportunity to help you achieve your goals through innovative and impactful solutions.
+            </p>
         </div>
-        <div class="contact-info">
-            <a href="mailto:example@example.com" aria-label="Email">Email</a>
-            <a href="tel:+123456789" aria-label="Phone">Phone</a>
+    </section>
+
+    <section id="services" style="background: var(--gray);">
+        <div class="container">
+            <h2 class="section-title">Comprehensive Services</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up">
+                    <h3>IT Services</h3>
+                    <p>Absolutely cutting-edge web development and AI automation solutions that will revolutionize your workflow!</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Creative Services</h3>
+                    <p>Wonderful visual storytelling through stunning photography, videography, and engaging social media content!</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Film & Video Production</h3>
+                    <p>Absolutely magnificent video editing and production services that will captivate your audience!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-aos="zoom-in">
+                    <img src="/api/placeholder/400/300" alt="Portfolio 1">
+                </div>
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="/api/placeholder/400/300" alt="Portfolio 2">
+                </div>
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="/api/placeholder/400/300" alt="Portfolio 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Success Stories</h2>
+            <div class="testimonial-card" data-aos="fade-up">
+                <p>"Working with Maia was absolutely wonderful! Her innovative approach and technical expertise transformed our organization's digital presence completely!"</p>
+                <p><strong>- Sarah Johnson, CEO</strong></p>
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <p>"The results were absolutely magnificent! Maia's creativity and attention to detail exceeded all our expectations!"</p>
+                <p><strong>- Michael Chen, Marketing Director</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Create Something Amazing Together!</h2>
+            <form class="contact-form" data-aos="fade-up">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><span>LinkedIn</span></a>
+                <a href="#"><span>Instagram</span></a>
+                <a href="#"><span>Twitter</span></a>
+            </div>
+            <p>&copy; 2024 Hypothius Picturehouse. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon!');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
-
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
-}
-
-.navbar {
-    background-color: #001f3f;
-    color: white;
-    padding: 1rem 0;
-    position: relative;
-}
-
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.navbar-toggle {
-    display: none;
-    cursor: pointer;
-}
-
-.navbar-menu {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.navbar-menu li {
-    margin-left: 2rem;
-}
-
-.navbar-menu a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.navbar-menu a:hover {
-    color: #ffcc00;
-}
-
-.hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    color: white;
-    text-align: center;
-    padding-top: 20%;
-}
-
-.hero-button {
-    background-color: #ffcc00;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-.section {
-    padding: 40px 0;
-}
-
-.about-me,
-.services,
-.testimonials,
-.contact {
-    background-color: #f4f4f4;
-    text-align: center;
-}
-
-footer {
-    background-color: #001f3f;
-    color: white;
-    padding: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.socials a, .contact-info a {
-    margin-left: 1rem;
-    color: white;
-    text-decoration: none;
-}
-
-.socials a:hover, .contact-info a:hover {
-    color: #ffcc00;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .navbar-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        background-color: #001f3f;
-        width: 100%;
-        top: 56px; /* Adjust based on navbar height */
-        left: 0;
-    }
-
-    .navbar-menu.active {
-        display: flex;
-    }
-
-    .navbar-toggle {
-        display: block;
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleButton = document.getElementById('navbarToggle');
-    const navbarMenu = document.getElementById('navbarMenu');
-
-    toggleButton.addEventListener('click', function() {
-        navbarMenu.classList.toggle('active');
-    });
-
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert("Message sent!");
-        // Handle form submission logic here (e.g., send data to a server)
-    });
-});
-
