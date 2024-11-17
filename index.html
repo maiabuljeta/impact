@@ -175,22 +175,47 @@
             gap: 1.5rem;
         }
 
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-        }
+ .portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
 
-        .portfolio-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
+     .portfolio-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+       .portfolio-item:hover img {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
 
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
+        .portfolio-item:hover .overlay {
+    opacity: 1; /* Show on hover */
+}
+
+        .portfolio-item .overlay p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+        .portfolio-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark background on hover */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
 
         .testimonials {
             background: var(--gray);
