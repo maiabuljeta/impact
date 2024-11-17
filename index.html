@@ -290,28 +290,54 @@
         </div>
     </section>
 
-    <section id="portfolio">
+    
+ <section id="portfolio">
+    <div class="container">
+        <h2 class="section-title">Featured Work</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-aos="zoom-in">
+                <img src="portfolio1.jpg" alt="Portfolio 1">
+                <div class="overlay">
+                    <p>IT Services and AI Automation</p>
+                </div>
+            </div>
+            <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
+                <img src="portfolio2.jpg" alt="Portfolio 2">
+                <div class="overlay">
+                    <p>Media Production Across Mediums</p>
+                </div>
+            </div>
+            <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200">
+                <img src="portfolio3.jpg" alt="Portfolio 3">
+                <div class="overlay">
+                    <p>Create Engagement With Thought-Provoking Content</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section id="testimonials" class="testimonials">
         <div class="container">
-            <h2 class="section-title">Featured Work</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-aos="zoom-in">
-                    <img src="portfolio1.jpg" alt="Portfolio 1">
-                    <div class="overlay">
-                        <p>IT Services and AI Automation</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="portfolio2.jpg" alt="Portfolio 2">
-                    <div class="overlay">
-                        <p>Media Production Across Mediums</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="portfolio3.jpg" alt="Portfolio 3">
-                    <div class="overlay">
-                        <p>Data Science Insights</p>
-                    </div>
-                </div>
+            <h2 class="section-title">Client Success Stories</h2>
+            <div class="testimonial-card" data-aos="fade-up">
+                <p>"Maia is a great worker and extremely reliable!"</p>
+                <p><strong>- Jonathen Lipp, Festival Director at the Big Apple Film Festival</strong></p>
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <p>"...Maia is also very kind and brings a lightness to all her projects and interactions. If you hire Maia, you’ll be hiring someone dependable and someone who can get the job done!"</p>
+                <p><strong>- Andrew Cohen, Associate Editor at Financial Poise</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Create Something Amazing Together!</h2>
+            <div class="contact-section" data-aos="fade-up">
+                <p>Ready to start your next project? Get in touch with me:</p>
+                <a href="mailto:maiabuljeta@gmail.com" class="contact-email">maiabuljeta@gmail.com</a>
             </div>
         </div>
     </section>
@@ -338,6 +364,26 @@
         window.addEventListener("scroll", function () {
             const navbar = document.querySelector(".navbar");
             navbar.classList.toggle("scrolled", window.scrollY > 50);
+        });
+
+          // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
