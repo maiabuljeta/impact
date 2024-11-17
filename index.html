@@ -71,14 +71,35 @@
         }
 
         .hero {
+            position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(26, 41, 66, 0.7), rgba(26, 41, 66, 0.7)), url('backgroundimage.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
             padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(26, 41, 66, 0.7), rgba(26, 41, 66, 0.7));
+            z-index: -1;
         }
 
         .hero-content h1 {
@@ -230,49 +251,6 @@
                 display: none;
             }
         }
-
-        /* Styling for the portfolio hover effect */
-.portfolio-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px; /* Rounded corners for consistency */
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    transition: transform 0.3s ease; /* Smooth zoom effect */
-}
-
-.portfolio-item:hover img {
-    transform: scale(1.1); /* Slight zoom-in effect */
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease; /* Smooth fade-in effect */
-    padding: 1rem;
-    font-size: 1.2rem;
-    pointer-events: none; /* Prevents unwanted hover interactions */
-}
-
-.portfolio-item:hover .overlay {
-    opacity: 1; /* Show overlay on hover */
-    pointer-events: auto; /* Allows text to be interactable if needed */
-}
-
     </style>
 </head>
 <body>
@@ -291,6 +269,11 @@
     </nav>
 
     <section id="home" class="hero">
+        <video autoplay loop muted playsinline>
+            <source src="backgroundvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
         <div class="hero-content" data-aos="fade-up">
             <h1>Empowering Your Vision Through Innovative Solutions</h1>
             <p>Where Creativity Meets Technical Excellence</p>
@@ -307,95 +290,54 @@
         </div>
     </section>
 
-
     <section id="portfolio">
-    <div class="container">
-        <h2 class="section-title">Featured Work</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item" data-aos="zoom-in">
-                <img src="portfolio1.jpg" alt="Portfolio 1">
-                <div class="overlay">
-                    <p>IT Services and AI Automation</p>
-                </div>
-            </div>
-            <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
-                <img src="portfolio2.jpg" alt="Portfolio 2">
-                <div class="overlay">
-                    <p>Media Production Across Mediums</p>
-                </div>
-            </div>
-            <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200">
-                <img src="portfolio3.jpg" alt="Portfolio 3">
-                <div class="overlay">
-                    <p>Create Engagement With Thought-Provoking Content</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <section id="testimonials" class="testimonials">
         <div class="container">
-            <h2 class="section-title">Client Success Stories</h2>
-            <div class="testimonial-card" data-aos="fade-up">
-                <p>"Maia is a great worker and extremely reliable!"</p>
-                <p><strong>- Jonathen Lipp, Festival Director at the Big Apple Film Festival</strong></p>
-            </div>
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                <p>"...Maia is also very kind and brings a lightness to all her projects and interactions. If you hire Maia, you’ll be hiring someone dependable and someone who can get the job done!"</p>
-                <p><strong>- Andrew Cohen, Associate Editor at Financial Poise</strong></p>
+            <h2 class="section-title">Featured Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-aos="zoom-in">
+                    <img src="portfolio1.jpg" alt="Portfolio 1">
+                    <div class="overlay">
+                        <p>IT Services and AI Automation</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="portfolio2.jpg" alt="Portfolio 2">
+                    <div class="overlay">
+                        <p>Media Production Across Mediums</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="portfolio3.jpg" alt="Portfolio 3">
+                    <div class="overlay">
+                        <p>Data Science Insights</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Let's Create Something Amazing Together!</h2>
-            <div class="contact-section" data-aos="fade-up">
-                <p>Ready to start your next project? Get in touch with me:</p>
-                <a href="mailto:maiabuljeta@gmail.com" class="contact-email">maiabuljeta@gmail.com</a>
-            </div>
+        <div class="contact-section" data-aos="fade-up">
+            <p>Have questions? Feel free to reach out:</p>
+            <a href="mailto:example@example.com" class="contact-email">example@example.com</a>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/maia-buljeta-fuchs-833b42131/"><span>LinkedIn</span></a>
-                <a href="https://www.instagram.com/hypothiuspicturehouse/"><span>Instagram</span></a>
-                <a href="https://x.com/hypothiusfilms"><span>X</span></a>
-            </div>
-            <p>&copy; 2024 Hypothius Picturehouse. All rights reserved.</p>
+        <p>&copy; 2024 Maia Buljeta-Fuchs. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS (Animate On Scroll)
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        AOS.init();
+        window.addEventListener("scroll", function () {
+            const navbar = document.querySelector(".navbar");
+            navbar.classList.toggle("scrolled", window.scrollY > 50);
         });
     </script>
 </body>
